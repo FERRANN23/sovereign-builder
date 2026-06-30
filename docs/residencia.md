@@ -27,7 +27,7 @@ La meta es desarrollar la capacidad de construir.
 
 Vengo de una formación como médico y de experiencia en emprendimiento, marketing, ventas, creación de contenido y desarrollo de proyectos digitales.
 
-Estoy entrando de forma intencional al mundo de la ingeniería moderna asistida por IA.
+Estoy construyendo una transición deliberada hacia la ingeniería moderna asistida por IA, integrando mi experiencia previa en medicina, emprendimiento, marketing, ventas y construcción de negocios para desarrollar una nueva capacidad: diseñar, construir y escalar productos en la era de la inteligencia artificial.
 
 Mi objetivo es desarrollar las habilidades necesarias para construir productos reales, servir mejor a clientes, crear un portafolio profesional y abrir oportunidades laborales o comerciales en tecnología.
 
