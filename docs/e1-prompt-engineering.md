@@ -147,6 +147,32 @@ alcance de 1–2 sesiones y mezcla temas de E2/E4.
 
 ---
 
+## Plan de construcción
+
+Principio que ordena el trabajo: **de menor a mayor incertidumbre.** Construir primero lo
+conocido y cierto, añadir la novedad gradualmente, y separar las capas para poder **aislar
+dónde falla** y verificar por partes — no construir todo de golpe.
+
+1. **Formulario.** `index.html` con los 5 campos + JS que captura las respuestas y las muestra
+   en pantalla (sin backend). _Verificación:_ llenarlo en el navegador y ver la captura.
+2. **Tubería vacía.** `api/brief.js`: función serverless que recibe el POST y devuelve un texto
+   **fijo** (sin IA todavía); el formulario la llama y muestra la respuesta. _Verificación:_ el
+   agua fluye antes de poner el motor.
+3. **Conectar la inteligencia.** Reemplazar el texto fijo por una llamada real a Claude con un
+   **prompt v0** armado desde las 5 respuestas; clave en variable de entorno. _Verificación:_
+   un negocio de prueba produce un brief.
+4. **Iterar el prompt** (el corazón de E1). Probar con 3 negocios (claro, ambiguo, casi vacío),
+   observar fallos, refinar, repetir. Aquí se forma el criterio (ver bitácora).
+5. **Pulido + entradas raras + README.** Manejar campos vacíos y fallos de API con dignidad;
+   escribir el `README.md` del proyecto.
+6. **Envío.** Elegir el cableado de Vercel (a/b del ADR), configurar la variable de entorno,
+   desplegar y verificar la URL en vivo. Cierra el bucle de valor.
+
+Cada tarea deja algo que funciona y se puede verificar. La construcción se hace **dirigiendo la
+IA y entendiendo cada pieza**, no ejecutando código pre-escrito.
+
+---
+
 ## Bitácora de construcción
 *(Se completa durante la construcción — esta es la parte donde se ve el criterio formándose.)*
 
