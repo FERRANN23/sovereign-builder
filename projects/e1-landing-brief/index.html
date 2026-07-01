@@ -68,8 +68,9 @@
     // Tomamos una referencia al formulario por su id
     const form = document.getElementById('brief-form');
 
-    // Escuchamos el evento "submit": ocurre cuando se presiona el botón "Generar brief"
-    form.addEventListener('submit', (evento) => {
+    // La función es "async" porque adentro vamos a ESPERAR (await) la
+    // respuesta del backend, que tarda un momento en llegar por la red.
+    form.addEventListener('submit', async (evento) => {
       // Un form, por defecto, recarga la página al enviarse. Lo evitamos:
       evento.preventDefault();
 
@@ -82,10 +83,20 @@
         objetivo: form.objetivo.value,
       };
 
-      // Por ahora SOLO mostramos lo capturado en pantalla.
-      // (En la Tarea 2 esto se enviará a la función /api/brief en lugar de mostrarse aquí.)
+      // Avisamos que estamos trabajando mientras esperamos la respuesta
       const resultado = document.getElementById('resultado');
-      resultado.textContent = JSON.stringify(datos, null, 2);
+      resultado.textContent = 'Generando…';
+
+      // Enviamos los datos al backend (POST) y ESPERAMOS su respuesta
+      const respuesta = await fetch('/api/brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+
+      // La respuesta llega como texto; la convertimos en objeto y mostramos el brief
+      const data = await respuesta.json();
+      resultado.textContent = data.brief;
     });
   </script>
 </body>
