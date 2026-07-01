@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brief de Landing</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+    label { display: block; margin-bottom: 1rem; font-weight: 600; }
+    input, textarea, select { display: block; width: 100%; padding: .5rem; margin-top: .25rem; font: inherit; font-weight: 400; }
+    button { padding: .6rem 1.2rem; font-size: 1rem; cursor: pointer; }
+    #resultado { white-space: pre-wrap; font-family: monospace; background: #f4f4f4; padding: 1rem; margin-top: 1.5rem; border-radius: 6px; }
+    #resultado:empty { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Brief de Landing</h1>
+  <p>Responde 5 preguntas sobre tu negocio y obtén la estructura de tu landing.</p>
+
+  <form id="brief-form">
+    <label>
+      Negocio
+      <input type="text" name="negocio" placeholder="Ej: Clínica dental Sonrisa" required>
+    </label>
+
+    <label>
+      Oferta
+      <textarea name="oferta" placeholder="Ej: Limpiezas, ortodoncia y blanqueamiento" required></textarea>
+    </label>
+
+    <label>
+      Público
+      <textarea name="publico" placeholder="Ej: Familias de la zona, 30 a 50 años" required></textarea>
+    </label>
+
+    <label>
+      Tono
+      <select name="tono" required>
+        <option value="" disabled selected>Selecciona una opción…</option>
+        <option>Cálido</option>
+        <option>Profesional</option>
+        <option>Premium</option>
+        <option>Directo</option>
+        <option>Inspirador</option>
+        <option>Divertido</option>
+      </select>
+    </label>
+
+    <label>
+      Objetivo
+      <select name="objetivo" required>
+        <option value="" disabled selected>Selecciona una opción…</option>
+        <option>Agendar una cita</option>
+        <option>Solicitar información</option>
+        <option>Solicitar cotización</option>
+        <option>Comprar</option>
+        <option>Registrarse</option>
+        <option>Iniciar conversación por WhatsApp</option>
+      </select>
+    </label>
+
+    <button type="submit">Generar brief</button>
+  </form>
+
+  <section id="resultado"></section>
+
+  <script>
+    // Tomamos una referencia al formulario por su id
+    const form = document.getElementById('brief-form');
+
+    // Escuchamos el evento "submit": ocurre cuando se presiona el botón "Generar brief"
+    form.addEventListener('submit', (evento) => {
+      // Un form, por defecto, recarga la página al enviarse. Lo evitamos:
+      evento.preventDefault();
+
+      // Recogemos las 5 respuestas en un objeto
+      const datos = {
+        negocio: form.negocio.value,
+        oferta: form.oferta.value,
+        publico: form.publico.value,
+        tono: form.tono.value,
+        objetivo: form.objetivo.value,
+      };
+
+      // Por ahora SOLO mostramos lo capturado en pantalla.
+      // (En la Tarea 2 esto se enviará a la función /api/brief en lugar de mostrarse aquí.)
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = JSON.stringify(datos, null, 2);
+    });
+  </script>
+</body>
+</html>
