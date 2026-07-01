@@ -1,0 +1,12 @@
+# Configuración local de Vercel (link del proyecto, cache) — no pertenece al repo
+.vercel
+
+# Dependencias instaladas — se reconstruyen desde package.json, no se versionan
+node_modules/
+
+# Variables de entorno con secretos — ¡NUNCA subir! (aquí vivirá tu clave de API)
+.env
+.env*.local
+
+# Archivos del sistema operativo (macOS)
+.DS_Store
